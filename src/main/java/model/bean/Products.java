@@ -7,8 +7,9 @@ public class Products {
     private String thumbnail;
     private String description;
     private int categoryId;
+    private String categoryName;
 
-    public Products() {
+	public Products() {
     }
 
     public Products(int id, String name, float price, String thumbnail, String description, int categoryId) {
@@ -67,4 +68,12 @@ public class Products {
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
+    
+    public String getCategoryName() {
+		return categoryName;
+	}
+
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
 }
