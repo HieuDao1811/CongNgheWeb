@@ -1,0 +1,12 @@
+# Ignore build output
+build/
+bin/
+target/
+
+# Class files
+*.class
+
+# IDE files
+/.settings/
+/.classpath
+.project
