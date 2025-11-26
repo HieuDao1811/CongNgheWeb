@@ -11,6 +11,7 @@ import model.bean.Products;
 public class ProductsDAO {
 
 	public List<Products> getAllProducts() {
+<<<<<<< HEAD
 		List<Products> list = new ArrayList<>();
         String sql = "SELECT p.id, p.name, p.price, p.thumbnail, p.description, "
                    + "c.name AS category_name "
@@ -120,6 +121,97 @@ public class ProductsDAO {
         }
         return false;
     }
+=======
+		String sql = "SELECT * FROM products";
+		List<Products> products = new ArrayList<>();
+		try (Connection conn = JDBCUtil.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();) {
+			while (rs.next()) {
+				Products product = new Products();
+				product = new Products();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("name"));
+				product.setPrice(rs.getFloat("price"));
+				product.setThumbnail(rs.getString("thumbnail"));
+				product.setDescription(rs.getString("description"));
+				product.setCategoryId(rs.getInt("category_id"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
+	public List<Products> getAllProductsByCategoryId(int id) {
+		String sql = "SELECT * FROM products WHERE category_id = " + id;
+		List<Products> products = new ArrayList<>();
+		try (Connection conn = JDBCUtil.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();) {
+			while (rs.next()) {
+				Products product = new Products();
+				product = new Products();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("name"));
+				product.setPrice(rs.getFloat("price"));
+				product.setThumbnail(rs.getString("thumbnail"));
+				product.setDescription(rs.getString("description"));
+				product.setCategoryId(rs.getInt("category_id"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
+	public Products getProductsById(String id) {
+		String sql = "SELECT * FROM products WHERE id = " + id;
+		Products product = new Products();
+		try (Connection conn = JDBCUtil.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();) {
+			while (rs.next()) {
+				product = new Products();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("name"));
+				product.setPrice(rs.getFloat("price"));
+				product.setThumbnail(rs.getString("thumbnail"));
+				product.setDescription(rs.getString("description"));
+				product.setCategoryId(rs.getInt("category_id"));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return product;
+	}
+
+	public List<Products> getProductsByName(String name) {
+		String sql = "SELECT * FROM products WHERE name LIKE '%" + name + "%'";
+		List<Products> products = new ArrayList<>();
+		try (Connection conn = JDBCUtil.getConnection();
+				PreparedStatement ps = conn.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();) {
+			while (rs.next()) {
+				Products product = new Products();
+				product = new Products();
+				product.setId(rs.getInt("id"));
+				product.setName(rs.getString("name"));
+				product.setPrice(rs.getFloat("price"));
+				product.setThumbnail(rs.getString("thumbnail"));
+				product.setDescription(rs.getString("description"));
+				product.setCategoryId(rs.getInt("category_id"));
+				products.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return products;
+	}
+
+>>>>>>> customer
 }
 
 

@@ -1,3 +1,6 @@
+<%@page import="model.bean.Categories"%>
+<%@page import="model.bean.Products"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,9 +37,9 @@
 					<div class="d-flex align-items-center ms-auto gap-2">
 
 			        <!-- Search -->
-			        <form class="d-flex" role="search">
+			        <form class="d-flex" role="search" action="SearchServlet" method="get">
 			          <input class="form-control me-2" type="search"
-			                 placeholder="Tìm kiếm" aria-label="Search">
+			                 placeholder="Tìm kiếm" aria-label="Search" name="nameProductSearch">
 			          <button class="btn btn-outline-success" type="submit">Tìm</button>
 			        </form>
 			
@@ -60,8 +63,12 @@
 			<!-- Menu left -->
 			<div class="col-lg-3 mt-4">
 				<div class="list-group">
-					<a href="#" class="list-group-item list-group-item-action"> Túi xách tay </a> 
-						<a href="#" class="list-group-item list-group-item-action">Túi mini</a> 
+				<%
+					List<Categories> categories = (List<Categories>)request.getAttribute("categories");
+					for(Categories c : categories){
+				%>
+					<a href="CategoryServlet?id=<%=c.getId() %>" class="list-group-item list-group-item-action"> <%=c.getName() %> </a>
+					<%}%>
 				</div>
 			</div>
 			<!-- End Menu left -->
@@ -108,100 +115,26 @@
 				<!-- End Slider -->
 				<!-- Products -->
 				<div class="row">
+				<%
+					List<Products> products = (List<Products>)request.getAttribute("products");
+					for(Products p : products){
+				%>
 					<div class="col-lg-4 col-md-6 mb-4">
 						<div class="card h-100">
-							<img class="card-img-top" src="img/product/DoElengance.png" alt="">
+							<img class="card-img-top" src="<%=p.getThumbnail() %>" alt="">
 							
 							 <hr style="margin:0; border-top: 2px solid #BDBDBD;">
 							
 							<div class="card-body">
 								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Đỏ Elegance</a>
+									<a href="OrderDetailsServlet?id=<%=p.getId() %>" style="color: #9E896D; text-decoration: none;"><%=p.getName() %></a>
 								</h4>
-								<h5>500$</h5>
-								<p class="card-text">Thiết kế tinh giản nhưng đầy cuốn hút. Màu đỏ rực rỡ mang lại vẻ nổi bật và quý phái.</p>
+								<h5><%=p.getPrice() %>>$</h5>
+								<p class="card-text"><%=p.getDescription() %></p>
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card h-100">
-							<img class="card-img-top" src="img/product/IvoryChic.png" alt="">
-							
-							<hr style="margin:0; border-top: 2px solid #BDBDBD;">	
-							
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Ivory Chic</a>
-								</h4>
-								<h5>50.000</h5>
-								<p class="card-text">Thanh lịch, màu kem tinh tế. Chất liệu mềm mại, bền đẹp.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card h-100">
-							<img class="card-img-top" src="img/product/a.png" alt="">
-							
-							<hr style="margin:0; border-top: 2px solid #BDBDBD;">
-							
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Túi đỏ</a>
-								</h4>
-								<h5>50.000</h5>
-								<p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-									màu sắc tốt.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card h-100">
-							<img class="card-img-top" src="img/product/b.png" alt="">
-							
-							<hr style="margin:0; border-top: 2px solid #BDBDBD;">
-							
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Túi đỏ</a>
-								</h4>
-								<h5>50.000</h5>
-								<p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-									màu sắc tốt.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card h-100">
-							<img class="card-img-top" src="img/product/ChristianDior.png" alt="">
-							
-							<hr style="margin:0; border-top: 2px solid #BDBDBD;">
-							
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Christian Dior</a>
-								</h4>
-								<h5>50.000</h5>
-								<p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-									màu sắc tốt.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-6 mb-4">
-						<div class="card h-100">
-							<img class="card-img-top" src="img/product/LV.png" alt="">
-							
-							<hr style="margin:0; border-top: 2px solid #BDBDBD;">
-							
-							<div class="card-body">
-								<h4 class="card-title">
-									<a href="#" style="color: #9E896D; text-decoration: none;">Louis Vuitton</a>
-								</h4>
-								<h5>50.000</h5>
-								<p class="card-text">Sản phẩm thoáng mát, có độ bền tốt, giữ
-									màu sắc tốt.</p>
-							</div>
-						</div>
-					</div>
+					<%}%>
 				</div>
 				<!-- End Products -->
 			</div>
