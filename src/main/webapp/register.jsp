@@ -48,7 +48,7 @@
 
   <h3 class="text-center mb-3" style="color:#9E896D;">Đăng ký tài khoản</h3>
 
-  <form action="register" method="post">
+  <form action="CheckRegisterServlet" method="post">
 
     <!-- Username -->
     <div class="mb-3">
@@ -65,7 +65,7 @@
     <!-- Phone -->
     <div class="mb-3">
       <label class="form-label">Số điện thoại</label>
-      <input type="text" name="phone" class="form-control" required>
+      <input type="text" name="phoneNumber" class="form-control" required>
     </div>
 
     <!-- Address -->
@@ -82,7 +82,7 @@
 
     <div class="mb-4">
       <label class="form-label">Nhập lại mật khẩu</label>
-      <input type="password" name="confirm" class="form-control" required>
+      <input type="password" name="confirmPassword" class="form-control" required>
     </div>
 	<!-- End Password -->
 

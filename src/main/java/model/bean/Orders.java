@@ -92,8 +92,8 @@ public class Orders {
         return orderDate;
     }
 
-    public void setOrderDate(Timestamp orderDate) {
-        this.orderDate = orderDate;
+    public void setOrderDate(Timestamp now) {
+        this.orderDate = now;
     }
 
     public String getStatus() {
