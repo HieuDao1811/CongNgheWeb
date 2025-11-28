@@ -25,6 +25,7 @@ public class AddCustomerServlet extends HttpServlet {
 
         request.setCharacterEncoding("UTF-8");
 
+        String username = request.getParameter("username");
         String fullname = request.getParameter("fullname");
         String phone = request.getParameter("phone_number");
         String address = request.getParameter("address");

@@ -11,47 +11,56 @@ import model.bo.UsersBO;
 
 import java.io.IOException;
 
-/**
- * Servlet implementation class CheckLoginServlet
- */
 @WebServlet("/CheckLoginServlet")
 public class CheckLoginServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
+
     public CheckLoginServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doPost(request, response);
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		
-		UsersBO usersBO = new UsersBO();
-		Users users = usersBO.login(username, password);
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		if (users != null) {
-			// Login successful
-			HttpSession session = request.getSession();
-			session.setAttribute("currentUser", users);
-			response.sendRedirect("IndexServlet");
-		} else {
-			request.setAttribute("errorMessage", "Invalid username or password");
-			request.getRequestDispatcher("login.jsp").forward(request, response);
-		}
-	}
+        // Nếu cần tiếng Việt:
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
 
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+
+        UsersBO usersBO = new UsersBO();
+        Users users = usersBO.login(username, password);   // trả về Users có cả field role
+
+        if (users != null) {
+            // Đăng nhập thành công
+            HttpSession session = request.getSession();
+            session.setAttribute("currentUser", users);      // lưu toàn bộ user
+            session.setAttribute("role", users.getRole());   // lưu riêng role cho dễ dùng
+
+            int role = users.getRole();
+
+            // Phân quyền
+            if (role == 1) {
+                // Admin
+                // Nếu bạn có AdminIndexServlet thì dùng: response.sendRedirect("AdminIndexServlet");
+                response.sendRedirect("admin_index.jsp");
+            } else {
+                // User bình thường
+                response.sendRedirect("IndexServlet");
+            }
+
+        } else {
+            // Sai tài khoản hoặc mật khẩu
+            request.setAttribute("errorMessage", "Sai tên đăng nhập hoặc mật khẩu");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+        }
+    }
 }

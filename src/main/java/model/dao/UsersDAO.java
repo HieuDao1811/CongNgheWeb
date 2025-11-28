@@ -3,7 +3,7 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,6 +34,7 @@ public class UsersDAO {
             while (rs.next()) {
                 Users u = new Users();
                 u.setId(rs.getInt("id"));
+                u.setUsername(rs.getString("username"));
                 u.setFullname(rs.getString("fullname"));
                 u.setPhoneNumber(rs.getString("phone_number"));
                 u.setAddress(rs.getString("address"));
@@ -124,13 +125,7 @@ public class UsersDAO {
         }
         return false;
     }
-=======
-
-import model.bean.Users;
-
-public class UsersDAO {
-
-	public Users login(String username, String password) {
+    public Users login(String username, String password) {
 		String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 		try (Connection conn = JDBCUtil.getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
 			pstmt.setString(1, username);
@@ -191,6 +186,5 @@ public class UsersDAO {
 			e.printStackTrace();
 		}
 	}
-
->>>>>>> customer
 }
+

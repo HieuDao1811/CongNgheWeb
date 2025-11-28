@@ -55,6 +55,13 @@
     <div class="container mt-4 mb-5">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
+         	<!-- Nút quay về admin -->
+		    <a href="admin_index.jsp"
+		       class="btn btn-outline-secondary"
+		       style="border-color:#9E896D; color:#9E896D;">
+		        Quay về
+		    </a>
+        
             <h3 style="color:#9E896D;">Quản lý sản phẩm</h3>
             <a href="add-product.jsp"
                class="btn btn-outline-secondary"

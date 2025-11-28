@@ -64,7 +64,7 @@ public class CheckRegisterServlet extends HttpServlet {
 				newUser.setPhoneNumber(phoneNumber);
 				newUser.setAddress(address);
 				usersBO.register(newUser);
-				request.setAttribute("successMessage", "Registration successful. Please log in.");
+				request.setAttribute("successMessage", "Đăng ký thành công!!!");
 				request.getRequestDispatcher("login.jsp").forward(request, response);
 				
 			}

@@ -37,7 +37,7 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="ms-auto d-flex align-items-center gap-2">
-                    <a href="#"
+                    <a href="login.jsp"
                        class="btn btn-outline-danger">
                         Đăng xuất
                     </a>
@@ -65,9 +65,6 @@
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title" style="color:#9E896D;">Quản lý sản phẩm</h5>
-                        <p class="card-text text-muted" style="flex:1;">
-                            Thêm mới, chỉnh sửa, xóa sản phẩm và cập nhật thông tin hiển thị trên trang chủ.
-                        </p>
                         <a href="admin-products"
                            class="btn btn-outline-secondary mt-2"
                            style="border-color:#9E896D; color:#9E896D;">
@@ -81,11 +78,7 @@
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title" style="color:#9E896D;">Quản lý đơn hàng</h5>
-                        <p class="card-text text-muted" style="flex:1;">
-                            Xem danh sách đơn hàng, trạng thái thanh toán, vận chuyển
-                            và xử lý đơn cho khách.
-                        </p>
-                        <a href="order-list.jsp"
+                        <a href="order-list"
                            class="btn btn-outline-secondary mt-2"
                            style="border-color:#9E896D; color:#9E896D;">
                             Xem đơn hàng
@@ -97,14 +90,11 @@
             <div class="col-lg-4">
                 <div class="card border-0 shadow-sm h-100">
                     <div class="card-body d-flex flex-column">
-                        <h5 class="card-title" style="color:#9E896D;">Quản lý khách hàng</h5>
-                        <p class="card-text text-muted" style="flex:1;">
-                            Xem thông tin khách hàng, lịch sử mua hàng và hỗ trợ chăm sóc khách.
-                        </p>
-                        <a href="customer-list.jsp"
+                        <h5 class="card-title" style="color:#9E896D;">Quản lý người dùng</h5>
+                        <a href="customer-list"
                            class="btn btn-outline-secondary mt-2"
                            style="border-color:#9E896D; color:#9E896D;">
-                            Xem khách hàng
+                            Xem người dùng
                         </a>
                     </div>
                 </div>

@@ -11,23 +11,26 @@ import model.bo.OrdersBO;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Servlet implementation class OrderListServlet
- */
 @WebServlet("/order-list")
 public class OrderListServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-	private OrdersBO ordersBO = new OrdersBO();
+    private static final long serialVersionUID = 1L;
+
+    private OrdersBO ordersBO = new OrdersBO();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        request.setCharacterEncoding("UTF-8");
+        response.setCharacterEncoding("UTF-8");
+
         String keyword = request.getParameter("keyword");
+
+        // Nếu không nhập keyword -> lấy tất cả
         List<Orders> list = ordersBO.searchOrders(keyword);
+
         request.setAttribute("orderList", list);
         request.setAttribute("keyword", keyword);
         request.getRequestDispatcher("order-list.jsp").forward(request, response);
     }
-
 }

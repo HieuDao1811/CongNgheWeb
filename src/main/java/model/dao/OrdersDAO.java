@@ -3,16 +3,11 @@ package model.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
->>>>>>> customer
-
 import model.bean.Orders;
 
 public class OrdersDAO {
-<<<<<<< HEAD
 	public List<Orders> searchOrders(String keyword) {
         List<Orders> list = new ArrayList<>();
 
@@ -141,8 +136,6 @@ public class OrdersDAO {
         }
         return false;
     }
-=======
-
 	public int insertOrder(Orders order) {
 		String sql = "INSERT INTO orders(user_id, fullname, email, phone_number, address, note, order_date, status, total_money) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -195,6 +188,5 @@ public class OrdersDAO {
 		}
 		return null;
 	}
-
->>>>>>> customer
 }
+

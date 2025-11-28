@@ -16,6 +16,11 @@
 <body style="background-color:#f7f7f7;">
 
 <div class="container mt-4 mb-5" style="max-width: 700px;">
+	<a href="admin_index.jsp"
+	      class="btn btn-outline-secondary"
+       style="border-color:#9E896D; color:#9E896D;">
+        Quay về
+	</a>
     <h3 class="mb-3" style="color:#9E896D;">Thêm sản phẩm</h3>
 
     <div class="card">

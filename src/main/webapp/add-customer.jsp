@@ -16,6 +16,10 @@
     <div class="card">
         <div class="card-body">
             <form action="add-customer" method="post">
+            	<div class="mb-3">
+                    <label class="form-label">Tên đăng nhập</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
                 <div class="mb-3">
                     <label class="form-label">Họ tên</label>
                     <input type="text" name="fullname" class="form-control" required>
